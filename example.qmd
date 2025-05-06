@@ -5,4 +5,38 @@ format: html
 editor: visual
 ---
 
-## 
+### Step 1: Create Project and QMD File
+
+I created a new RStudio Project named `git-demo`. Within this project folder, I creaded a file called `example.qmd` that can be knitted into a HTML file.
+
+### Step 2: Synchronize Local Repository with GitHub
+
+In this step, I connected my local RStudio project to a new GitHub repository and successfully pushed my initial commit.
+
+1.  I opened the Terminal in RStudio and ran the following commands to initialize the repository, track all files, and commit them:
+
+    ```         
+    git init
+    git add .
+    git commit -m "Initial commit"
+    ```
+
+2.  I created a new repository on GitHub named `git-demo`. Then, I connected my local project to it using the SSH URL:
+
+    ```         
+    git remote add origin git@github.com:RuoWei-ctrl/git-demo.git
+    ```
+
+3.  Since GitHub may already contain a `README.md`, I pulled and rebased any remote changes first:
+
+    ```         
+    git pull --rebase origin main
+    ```
+
+    Then I pushed my local commit to GitHub and set the upstream:
+
+    ```         
+    git push -u origin main
+    ```
+
+After this step, my RStudio project was successfully synchronized with the `git-demo` repository on GitHub, and all files were under version control.
