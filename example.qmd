@@ -40,6 +40,7 @@ In this step, I connected my local RStudio project to a new GitHub repository an
     ```
 
 After this step, my RStudio project was successfully synchronized with the `git-demo` repository on GitHub, and all files were under version control.
+<<<<<<< HEAD
 
 ### Step 3: Create and Push a New Branch
 
@@ -91,3 +92,4 @@ Since I used `git commit --amend` to rewrite the previous commit, I had to use `
 ### Step 5: Create a Conflict by Modifying `main`
 
 This line was added in the main branch to create a merge conflict.
+
