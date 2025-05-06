@@ -5,4 +5,89 @@ format: html
 editor: visual
 ---
 
-## 
+### Step 1: Create Project and QMD File
+
+I created a new RStudio Project named `git-demo`. Within this project folder, I creaded a file called `example.qmd` that can be knitted into a HTML file.
+
+### Step 2: Synchronize Local Repository with GitHub
+
+In this step, I connected my local RStudio project to a new GitHub repository and successfully pushed my initial commit.
+
+1.  I opened the Terminal in RStudio and ran the following commands to initialize the repository, track all files, and commit them:
+
+    ```         
+    git init
+    git add .
+    git commit -m "Initial commit"
+    ```
+
+2.  I created a new repository on GitHub named `git-demo`. Then, I connected my local project to it using the SSH URL:
+
+    ```         
+    git remote add origin git@github.com:RuoWei-ctrl/git-demo.git
+    ```
+
+3.  Since GitHub may already contain a `README.md`, I pulled and rebased any remote changes first:
+
+    ```         
+    git pull --rebase origin main
+    ```
+
+    Then I pushed my local commit to GitHub and set the upstream:
+
+    ```         
+    git push -u origin main
+    ```
+
+After this step, my RStudio project was successfully synchronized with the `git-demo` repository on GitHub, and all files were under version control.
+
+### Step 3: Create and Push a New Branch
+
+1.  Create the branch using `git branch` and switch to the new branch
+
+    ```         
+    git branch testbranch
+    git switch testbranch
+    ```
+
+2.  Edit the `example.qmd` file
+
+3.  Stage and commit the changes
+
+    ```         
+    git add example.qmd
+    git commit -m "Update example.qmd in testbranch"
+    ```
+
+4.  Push the branch to GitHub
+
+    ```         
+    git push -u origin testbranch
+    ```
+
+### Step 4: Add Data and Amend the Previous Commit
+
+To include the data from Assignment 1, I created a new folder named `data` and added the relevant file into it. Then, instead of making a new commit, I amended the previous commit to include this new data.
+
+1.  I manually created a `data` folder in the project directory，and I moved the CSV file `public_response (1).csv` into the `data/` folder.
+
+2.  I staged the folder and amended the previous commit:
+
+    ```         
+    git add data/
+    git commit --amend --no-edit
+    ```
+
+3.  I force-pushed the amended commit to the remote `testbranch`:
+
+    ```         
+    git push --force
+    ```
+
+To include the newly added `data/` folder in the last commit, I used the command `git commit --amend`. This command allows me to modify the most recent commit without creating a new one.
+
+Since I used `git commit --amend` to rewrite the previous commit, I had to use `git push --force` to update the remote branch. This is necessary because the commit history of my local branch no longer matches the one on GitHub.
+
+### Step 5: Create a Conflict by Modifying `main`
+
+This line was added in the main branch to create a merge conflict.
